@@ -1,16 +1,12 @@
--- ELEVADOR
-loadstring(game:HttpGet("https://raw.githubusercontent.com/fameligar6-tech/Elevador/refs/heads/main/Elevador.lua"))()
+elseif Method == "Elevador" then
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/fameligar6-tech/Elevador/refs/heads/main/Elevador.lua"))()
 
-repeat task.wait() until game:GetService("ReplicatedStorage"):WaitForChild("MatchData"):WaitForChild("CurrentWave").Value == 1
+elseif Method == "AutoSkip" then
+    task.spawn(function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/fameligar6-tech/Auto-Farm-TDD/main/script.lua"))()
+    end)
 
-task.wait(3)
-
--- AUTO SKIP
-task.spawn(function()
-	loadstring(game:HttpGet("https://raw.githubusercontent.com/fameligar6-tech/Auto-Farm-TDD/main/script.lua"))()
-end)
-
-task.wait(1)
-
--- FARM
-loadstring(game:HttpGet("https://raw.githubusercontent.com/fameligar6-tech/Farm/refs/heads/main/farm.lua"))()
+elseif Method == "Farm" then
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/fameligar6-tech/Farm/refs/heads/main/farm.lua"))()
+    _G.FarmMethod = "Insane"
+end
